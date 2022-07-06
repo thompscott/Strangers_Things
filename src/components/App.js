@@ -6,9 +6,9 @@ import ViewPosts from "./ViewPosts";
 
 
 const App = () =>{
-  const posts =  ViewPosts()
+  const posts = ViewPosts()
   console.log(posts);
-    return (<h1>Hello, world!</h1>
-)}
+    return (<h1>Hello, world!</h1>)
+  }
 
 export default App
