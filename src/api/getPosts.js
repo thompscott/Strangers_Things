@@ -8,13 +8,13 @@ const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}/`;
 
 
 /*Gets Posts from Database*/
-const getPosts = async () => {
+const GetPosts = async () => {
     await fetch(`${APIURL}/posts`)
     .then(response => response.json())
     .then(result => {
-        return result;
+        console.log(result)
     })
     .catch(console.error);
 }
 
-export default getPosts;
+export default GetPosts;
