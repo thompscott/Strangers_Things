@@ -66,3 +66,5 @@ export const registerAPI = async (username, password) => {
         console.error(error);
     }
 }
+
+

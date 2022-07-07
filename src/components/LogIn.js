@@ -5,8 +5,19 @@ const LogIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(0);
+console.log( localStorage.getItem("token"))
 
-  return (
+return(
+
+  
+    localStorage.getItem("token") ?
+
+<div>
+    <button onClick={()=> {
+            localStorage.removeItem("token")
+    }}>Log Out</button>
+</div>        :
+
     <div className="login">
       <form
         onSubmit={(event) => {
