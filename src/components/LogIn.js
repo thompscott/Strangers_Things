@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { logIn, register } from "../api";
+import { logIn, registerAPI } from "../api";
 
 const LogIn = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +12,7 @@ const LogIn = () => {
         onSubmit={(event) => {
           event.preventDefault();
           handleSubmit(username, password, register);
+          setRegister(0);
         }}
       >
         <fieldset>
@@ -25,7 +26,6 @@ const LogIn = () => {
             onChange={(event) => {
               event.preventDefault();
               setUsername(event.target.value);
-              console.log({ username });
             }}
           />
         </fieldset>
@@ -40,32 +40,36 @@ const LogIn = () => {
             onChange={(event) => {
               event.preventDefault();
               setPassword(event.target.value);
-              console.log({ password });
+
             }}
           />
         </fieldset>
-        <button
+        <button type="submit"
           onClick={() => {
             setRegister(1);
           }}
         >
           Register
         </button>
-        <button>LogIn</button>
+        <button type="submit">LogIn</button>
       </form>
     </div>
   );
 };
 
 async function handleSubmit(username, password, register) {
-  register
-    ? () => {
-        register(username, password);
-        setRegister(0);
-      }
-    : logIn(username, password);
 
-  console.log(username, password, register, "here");
+  if (register) {
+    const token = await registerAPI(username, password);
+    localStorage.setItem("token", token);
+  }
+  else {
+    const token = await logIn(username, password);
+    localStorage.setItem("token", token);
+  }
+
+        
 }
+
 
 export default LogIn;

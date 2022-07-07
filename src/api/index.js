@@ -30,20 +30,21 @@ export const logIn = async (username, password) => {
         },
         body: JSON.stringify({
             user: {
-                username: {username},
-                password: {password}
+                username: username,
+                password: password
             }
         })
     });
-        const result = response.json();
-        return result;
+        const result = await response.json();
+        const token = result.data.token;
+        return token;
     }
     catch (error) {
         console.error(error);
     }
 }
 
-export const register = async (username, password) => {
+export const registerAPI = async (username, password) => {
     try {
         const response = await fetch(`${APIURL}/users/register`, {
         method: "POST",
@@ -52,13 +53,14 @@ export const register = async (username, password) => {
         },
         body: JSON.stringify({
             user: {
-                username: {username},
-                password: {password}
+                username: username,
+                password: password
             }
         })
     });
-        const result = response.json();
-        return result;
+        const result = await response.json();
+        const token = result.data.token;
+        return token;
     }
     catch (error) {
         console.error(error);
