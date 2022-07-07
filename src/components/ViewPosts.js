@@ -7,8 +7,6 @@ const ViewPosts = () => {
   const fetchAllPosts = async () => {
     const data = await GetPosts();
     const posts = data.data.posts;
-    console.log(data);
-    console.log(posts);
     setAllPosts(posts);
   };
 
@@ -19,7 +17,7 @@ const ViewPosts = () => {
   /*Creates User Posts JSX*/
   return (
     <div>
-      {allPosts.map((element) => {
+      {allPosts ? allPosts.map((element) => {
         return (
           <div key={element._id} className="">
             <h2 className="postsTitle">{element.title}</h2>
@@ -30,7 +28,7 @@ const ViewPosts = () => {
             <p className="deliveryOption">{element.willDeliver}</p>
           </div>
         );
-      })}
+      }): null}
     </div>
   );
 };

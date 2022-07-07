@@ -20,4 +20,47 @@ export const GetPosts = async () => {
     
 }
 
-export default GetPosts;
+
+export const logIn = async (username, password) => {
+    try {
+        const response = await fetch(`${APIURL}/users/login`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            user: {
+                username: {username},
+                password: {password}
+            }
+        })
+    });
+        const result = response.json();
+        return result;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+
+export const register = async (username, password) => {
+    try {
+        const response = await fetch(`${APIURL}/users/register`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            user: {
+                username: {username},
+                password: {password}
+            }
+        })
+    });
+        const result = response.json();
+        return result;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
