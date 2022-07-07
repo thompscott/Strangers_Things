@@ -1,59 +1,71 @@
-import React , {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { logIn, register } from "../api";
 
-
-const [username, setUsername] = useState('');
-const [password, setPassword] = useState('');
-
-
 const LogIn = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [register, setRegister] = useState(0);
+
   return (
     <div className="login">
-      <form onSubmit={handleSubmit({username, password})}>
-      <fieldset>
-        <label htmlFor="username">Query</label>
-        <input
-          minLength={1}
-          id="username"
-          type="text"
-          placeholder="Enter Username"
-          value={username}
-          onChange={(event) => {
-            setUsername(event.target.value);
-            console.log({username})
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSubmit(username, password, register);
+        }}
+      >
+        <fieldset>
+          <label htmlFor="username">Username</label>
+          <input
+            minLength={1}
+            id="username"
+            type="text"
+            placeholder="Enter Username"
+            value={username}
+            onChange={(event) => {
+              event.preventDefault();
+              setUsername(event.target.value);
+              console.log({ username });
+            }}
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="password">Password</label>
+          <input
+            minLength={1}
+            id="password"
+            type="text"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(event) => {
+              event.preventDefault();
+              setPassword(event.target.value);
+              console.log({ password });
+            }}
+          />
+        </fieldset>
+        <button
+          onClick={() => {
+            setRegister(1);
           }}
-        />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="password">Query</label>
-        <input
-          minLength={1}
-          id="password"
-          type="text"
-          placeholder="Enter Password"
-          value={password}
-          onChange={(event) => {
-            setPassword(event.target.value);
-            console.log({password})
-          }}
-        />
-      </fieldset>
-        <button >Register</button>
+        >
+          Register
+        </button>
         <button>LogIn</button>
       </form>
     </div>
   );
 };
 
+async function handleSubmit(username, password, register) {
+  register
+    ? () => {
+        register(username, password);
+        setRegister(0);
+      }
+    : logIn(username, password);
 
-async function  handleSubmit(username, password){
-    logIn(username,password);
-    register(username, password);
-
-
+  console.log(username, password, register, "here");
 }
-
-
-
 
 export default LogIn;

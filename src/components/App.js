@@ -1,6 +1,6 @@
 import React from "react";
-// import ViewPosts from "./ViewPosts";
-// import LogIn from "./LogIn";  
+import ViewPosts from "./ViewPosts";
+import LogIn from "./LogIn";  
 
 
 
@@ -11,7 +11,7 @@ const App =  () =>{
   
     return (
     <div>
-        <h1>hello</h1>
+        <LogIn />
     </div>)
   }
 
