@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ViewPosts from "./ViewPosts";
 import LogIn from "./LogIn";  
 
@@ -7,11 +7,11 @@ import LogIn from "./LogIn";
 
 
 const App =  () =>{
-  
+  const [token, setToken] = useState('');
   
     return (
     <div>
-        <LogIn />
+        <LogIn token={token} setToken={setToken}  />
     </div>)
   }
 
