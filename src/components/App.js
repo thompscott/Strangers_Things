@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import ViewPosts from "./ViewPosts";
-import LogIn from "./LogIn";  
+import LogIn from "./LogIn";
 import CreatePost from "./CreatePost";
 
+const App = () => {
+  const [token, setToken] = useState(
+    localStorage.getItem("token") ? localStorage.getItem("token") : ""
+  );
 
-
-
-
-const App =  () =>{
-  const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : (''));
-  
-    return (
+  return (
     <div>
-        <LogIn token={token} setToken={setToken}  />
-        <CreatePost token={token}/>
-        <ViewPosts token={token}/>
-    </div>)
-  }
+      <LogIn token={token} setToken={setToken} />
+      <CreatePost token={token} />
+      <ViewPosts token={token} />
+    </div>
+  );
+};
 
-export default App
+export default App;

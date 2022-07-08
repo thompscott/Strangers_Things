@@ -17,8 +17,8 @@ const CreatePost = (props) => {
             title: title,
             description: description,
             price: price,
-            willDeliver: deliveryCheck
-          }
+            willDeliver: deliveryCheck,
+          };
           console.log(token);
           createPost(postObj, token);
         }}
