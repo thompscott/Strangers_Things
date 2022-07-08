@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { modifyPost } from "../api";
 
 const ModifyPost = (props) => {
-  const [token, postId, titleIn, descriptionIn, priceIn, deliveryCheckIn] = [props.token, props.postId,];
+  const [token, postId, titleIn, descriptionIn, priceIn, deliveryCheckIn] = [props.token, props.postId, props.titleIn, props.descriptionIn, props.priceIn, props.deliveryCheckIn];
   const [deliveryCheck, setDeliveryCheck] = useState(deliveryCheckIn);
   const [title, setTitle] = useState(titleIn);
   const [description, setDescription] = useState(descriptionIn);
   const [price, setPrice] = useState(priceIn);
+  console.log(token);
   return (
     <div className="modifyPost">
       <form

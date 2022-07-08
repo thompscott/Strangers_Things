@@ -13,8 +13,8 @@ const App =  () =>{
     return (
     <div>
         <LogIn token={token} setToken={setToken}  />
-        <CreatePost token ={token}/>
-        <ViewPosts />
+        <CreatePost token={token}/>
+        <ViewPosts token={token}/>
     </div>)
   }
 
