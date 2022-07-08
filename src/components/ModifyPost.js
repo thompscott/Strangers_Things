@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { modifyPost } from "../api";
 
 const ModifyPost = (props) => {
-  const [token, postId, titleIn, descriptionIn, priceIn, deliveryCheckIn] = [props.token, props.postId, props.titleIn, props.descriptionIn, props.priceIn, props.deliveryCheckIn];
+  const [token, postId, titleIn, descriptionIn, priceIn, deliveryCheckIn, setModify] = [props.token, props.postId, props.titleIn, props.descriptionIn, props.priceIn, props.deliveryCheckIn, props.setModify];
   const [deliveryCheck, setDeliveryCheck] = useState(deliveryCheckIn);
   const [title, setTitle] = useState(titleIn);
   const [description, setDescription] = useState(descriptionIn);
@@ -21,6 +21,7 @@ const ModifyPost = (props) => {
           };
           console.log(token);
           modifyPost(postObj, token, postId);
+          setModify(0)
         }}
       >
         <fieldset>
@@ -75,8 +76,8 @@ const ModifyPost = (props) => {
             }}
           />
         </fieldset>
-        <button type="submit">Update Post</button>
-        <button type="button">Cancel Update...</button>
+        <button type="submit" >Update Post</button>
+        <button onClick={()=>{setModify(0)}}>Cancel Update...</button> 
       </form>
     </div>
   );

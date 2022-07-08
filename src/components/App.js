@@ -8,7 +8,7 @@ import CreatePost from "./CreatePost";
 
 
 const App =  () =>{
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : (''));
   
     return (
     <div>

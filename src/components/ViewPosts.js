@@ -6,7 +6,7 @@ import { GetPosts } from "../api";
 const ViewPosts = (props) => {
   const [token] = [props.token];
   const [allPosts, setAllPosts] = useState([]);
-  const [modify, setModify] = useState(false);
+  const [modify, setModify] = useState(0);
   const fetchAllPosts = async () => {
     const data = await GetPosts();
     const posts = data.data.posts;
@@ -29,9 +29,10 @@ console.log(token);
             <p className="postsDescription">{element.description}</p>
             <p className="price">{element.price}</p>
             <p className="deliveryOption">{element.willDeliver}</p>
-            {modify ? <ModifyPost token={token} postId={element._id} titleIn={element.title} descriptionIn={element.description} priceIn={element.price} deliveryCheckIn={element.willDeliver}/>: null}
+            {modify === element._id ? <ModifyPost token={token} postId={element._id} titleIn={element.title} descriptionIn={element.description} priceIn={element.price} deliveryCheckIn={element.willDeliver} setModify={setModify}/> : null}
+            
             <button onClick={() =>{
-              setModify(true);
+              setModify(element._id);
               return ;
             }
             }>Modify Post </button>
