@@ -67,7 +67,7 @@ export const registerAPI = async (username, password) => {
     }
 }
 
-export const createPost= (titleAPI, descriptionAPI, priceAPI, willDeliverAPI, token)=> {
+export const createPost= async (posts,token)=> {
 
     try {
         const response = await fetch(`${APIURL}/posts`, {
@@ -77,12 +77,7 @@ export const createPost= (titleAPI, descriptionAPI, priceAPI, willDeliverAPI, to
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            user: {
-                title: titleAPI,
-                description: descriptionAPI,
-                price: priceAPI,
-                willDeliver: willDeliverAPI
-            }
+            user: posts
         })
     });
         const result = await response.json();
