@@ -13,8 +13,14 @@ const CreatePost = (props) => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          handleSubmit(username, password, register, setToken);
-          setRegister(0);
+          const postObj = {
+            title: title,
+            description: description,
+            price: price,
+            willDeliver: deliveryCheck
+          }
+          console.log(token);
+          createPost(postObj, token);
         }}
       >
         <fieldset>
@@ -64,10 +70,8 @@ const CreatePost = (props) => {
           <input
             id="willDeliver"
             type="checkbox"
-            value={deliveryCheck}
             onChange={(event) => {
-              event.preventDefault();
-              setDeliveryCheck(event.target.value);
+              setDeliveryCheck(!deliveryCheck);
             }}
           />
         </fieldset>

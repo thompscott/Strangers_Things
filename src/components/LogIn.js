@@ -6,13 +6,10 @@ const LogIn = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(0);
-  console.log(localStorage.getItem("token"));
-  console.log(logInLogOut());
   
   return logInLogOut();
   
   function logInLogOut() {
-    console.log("here");
     return localStorage.getItem("token") ? (
       <div>
         <button
