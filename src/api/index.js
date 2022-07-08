@@ -87,3 +87,24 @@ export const createPost= async (posts, token)=> {
         console.error(error);
     }
 }
+
+export const modifyPost= async (posts, token, postId)=> {
+ 
+    try {
+        const response = await fetch(`${APIURL}/posts/${postId}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            post: posts
+        })
+    });
+        const result = await response.json();
+       console.log(result, "result")
+    }
+    catch (error) {
+        console.error(error);
+    }
+}

@@ -26,6 +26,8 @@ const ViewPosts = () => {
             <p className="postsDescription">{element.description}</p>
             <p className="price">{element.price}</p>
             <p className="deliveryOption">{element.willDeliver}</p>
+            <button>Modify Post </button>
+            <button>Delete Post</button>
           </div>
         );
       }): null}
