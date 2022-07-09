@@ -111,3 +111,20 @@ export const getUser = async (token) => {
     console.error(error);
   }
 };
+
+export const deletePost = async (token, postId) =>{
+    try {
+        const response = await fetch(`${APIURL}/posts/${postId}`, {  
+          method : "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });   
+        const result = await response.json();
+        return result;
+      } catch (error) {
+        console.error(error);
+      }
+
+};

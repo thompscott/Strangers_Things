@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ModifyPost } from "./index";
-import { GetPosts, getUser } from "../api";
+import { GetPosts, getUser , deletePost} from "../api";
 
 /*Creates Posts to View*/
 const ViewPosts = (props) => {
@@ -8,6 +8,7 @@ const ViewPosts = (props) => {
   const [allPosts, setAllPosts] = useState([]);
   const [modify, setModify] = useState(0);
   const [userId, setUserId] = useState("");
+  const [deleted, setDeleted] = useState([]);
   const fetchAllPosts = async () => {
     const data = await GetPosts();
     const posts = data.data.posts;
@@ -58,7 +59,13 @@ const ViewPosts = (props) => {
                     >
                       Modify Post{" "}
                     </button>
-                    <button>Delete Post</button>{" "}
+                    <button
+                     onClick={()=>{
+                        deletePost(element._id)
+                        return;
+                    }}
+                    >
+                      Delete Post</button>{" "}
                   </div>
                 ) : null}
               </div>
