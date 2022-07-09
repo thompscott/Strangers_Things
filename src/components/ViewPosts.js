@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ModifyPost } from "./index";
 import { GetPosts, getUser, deletePost } from "../api";
 import CreatePost from "./CreatePost";
+import CreateMessage from "./CreateMessage";
 
 /*Creates Posts to View*/
 const ViewPosts = (props) => {
@@ -10,6 +11,7 @@ const ViewPosts = (props) => {
   const [modify, setModify] = useState(0);
   const [userId, setUserId] = useState("");
   const [createNewPost, setCreateNewPost] = useState(false);
+  const [message, setMessage] = useState(false)
   const fetchAllPosts = async () => {
     const data = await GetPosts(token);
     const posts = data.data.posts;
@@ -89,7 +91,19 @@ const ViewPosts = (props) => {
                         Delete Post
                       </button>{" "}
                     </div>
-                  ) : null}
+                  ) : <div >
+                         {message ?  <CreateMessage  token={token}  postId={element._id} setMessage={setMessage} /> :  (
+          <div>
+          <button
+            onClick={() => {
+              setMessage(true);
+            }}
+          >
+            Create New Message
+          </button>
+          </div>
+        )}
+                  </div> }
                 </div>
               );
             })
