@@ -73,6 +73,7 @@ const ViewPosts = (props) => {
 
                   {userId === element.author._id ? (
                     <div>
+                    <div>
                       {" "}
                       <button
                         onClick={() => {
@@ -90,6 +91,20 @@ const ViewPosts = (props) => {
                       >
                         Delete Post
                       </button>{" "}
+                    </div>
+                    <div>
+                      <h3>Messages</h3>
+                      {element.messages.map((messageElement) => {
+                        return (
+                          <div key={messageElement._id} >
+                            <p>{messageElement.content}</p>
+                            <p>Sent From: {messageElement.fromUser.username}</p>
+                          </div>
+                          
+
+                        )
+                      })}
+                    </div>
                     </div>
                   ) : <div >
                          {message ?  <CreateMessage  token={token}  postId={element._id} setMessage={setMessage} /> :  (
