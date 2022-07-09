@@ -11,7 +11,7 @@ const ViewPosts = (props) => {
   const [userId, setUserId] = useState("");
   const [createNewPost, setCreateNewPost] = useState(false);
   const fetchAllPosts = async () => {
-    const data = await GetPosts();
+    const data = await GetPosts(token);
     const posts = data.data.posts;
     setAllPosts(posts);
 
@@ -47,6 +47,8 @@ const ViewPosts = (props) => {
       <div>
         {allPosts
           ? allPosts.map((element) => {
+            {userId === element.author._id ? console.log(element): null}
+            console.log(element);
               return (
                 <div key={element._id} className="">
                   <h2 className="postsTitle">{element.title}</h2>

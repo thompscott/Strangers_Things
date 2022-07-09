@@ -4,9 +4,12 @@ const cohortName = "2206-FTB-ET-WEB-FT";
 const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}/`;
 
 /*Gets Posts from Database*/
-export const GetPosts = async () => {
+export const GetPosts = async (token) => {
   try {
-    const response = await fetch(`${APIURL}/posts`);
+    const response = await fetch(`${APIURL}/posts`, { headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }});
     const result = response.json();
     return result;
   } catch (error) {
