@@ -50,7 +50,7 @@ const ViewPosts = (props) => {
         {allPosts
           ? allPosts.map((element) => {
             {userId === element.author._id ? console.log(element): null}
-            console.log(element);
+            
               return (
                 <div key={element._id} className="">
                   <h2 className="postsTitle">{element.title}</h2>
