@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createPost } from "../api";
 
 const CreatePost = (props) => {
-  const [token] = [props.token];
+  const [token, setCreateNewPost] = [props.token, props.setCreateNewPost];
   const [deliveryCheck, setDeliveryCheck] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -13,6 +13,7 @@ const CreatePost = (props) => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
+
           const postObj = {
             title: title,
             description: description,
@@ -21,6 +22,7 @@ const CreatePost = (props) => {
           };
           console.log(token);
           createPost(postObj, token);
+          setCreateNewPost(false);
         }}
       >
         <fieldset>
@@ -76,6 +78,13 @@ const CreatePost = (props) => {
           />
         </fieldset>
         <button type="submit">Create Post</button>
+        <button
+          onClick={() => {
+            setCreateNewPost(false);
+          }}
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );
