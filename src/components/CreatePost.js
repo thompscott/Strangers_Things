@@ -20,7 +20,6 @@ const CreatePost = (props) => {
             price: price,
             willDeliver: deliveryCheck,
           };
-          console.log(token);
           createPost(postObj, token);
           setCreateNewPost(false);
         }}

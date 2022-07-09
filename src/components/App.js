@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ViewPosts from "./ViewPosts";
 import LogIn from "./LogIn";
 import CreatePost from "./CreatePost";
+import {Routes, Route } from "react-router-dom";
 
 const App = () => {
   const [token, setToken] = useState(
@@ -9,10 +10,24 @@ const App = () => {
   );
 
   return (
-    <div>
-      <LogIn token={token} setToken={setToken} />
-      <ViewPosts token={token} />
-    </div>
+  
+
+        
+          
+
+
+          <Routes>
+            <Route path="/posts" element={<ViewPosts token={token} />} />
+            <Route path="/profile" element={<p>profile</p>} />
+            <Route path="/login" element={<LogIn token={token} setToken={setToken} />} />
+            <Route path="/register" element={<LogIn token={token} setToken={setToken} />} />
+
+          </Routes>
+      
+      
+      
+ 
+     
   );
 };
 

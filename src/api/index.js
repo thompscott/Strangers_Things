@@ -71,7 +71,6 @@ export const createPost = async (posts, token) => {
       }),
     });
     const result = await response.json();
-    console.log(result, "result");
   } catch (error) {
     console.error(error);
   }
@@ -90,7 +89,6 @@ export const modifyPost = async (posts, token, postId) => {
       }),
     });
     const result = await response.json();
-    console.log(result, "result");
   } catch (error) {
     console.error(error);
   }
@@ -106,7 +104,7 @@ export const getUser = async (token) => {
     });
     const result = await response.json();
     return result;
-    console.log(result, "result");
+
   } catch (error) {
     console.error(error);
   }

@@ -23,7 +23,6 @@ const ModifyPost = (props) => {
   const [title, setTitle] = useState(titleIn);
   const [description, setDescription] = useState(descriptionIn);
   const [price, setPrice] = useState(priceIn);
-  console.log(token);
   return (
     <div className="modifyPost">
       <form
@@ -35,7 +34,6 @@ const ModifyPost = (props) => {
             price: price,
             willDeliver: deliveryCheck,
           };
-          console.log(token);
           modifyPost(postObj, token, postId);
           setModify(0);
         }}
