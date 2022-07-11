@@ -10,7 +10,7 @@ const CreateMessage = (props) => {
         onSubmit={(event) => {
           event.preventDefault(); 
           sendMessage(token, postId, messageCont)
-          setMessage(false);
+          setMessage('');
         }}
       >
         <fieldset>
@@ -30,7 +30,7 @@ const CreateMessage = (props) => {
         <button type="submit">Send Message</button>
         <button
           onClick={() => {
-            setMessage(false);
+            setMessage('');
           }}
         >
           Cancel

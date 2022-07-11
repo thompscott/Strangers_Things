@@ -12,7 +12,7 @@ const ViewPosts = (props) => {
   const [modify, setModify] = useState(0);
   const [userId, setUserId] = useState("");
   const [createNewPost, setCreateNewPost] = useState(false);
-  const [message, setMessage] = useState(false);
+  const [message, setMessage] = useState('');
   const [searchTerm, setSearchTerm] = useState("");
   const fetchAllPosts = async () => {
     const data = await GetPosts(token);
@@ -134,7 +134,7 @@ const ViewPosts = (props) => {
                     </div>
                   ) : (
                     <div>
-                      {message ? (
+                      {message === element._id ? (
                         <CreateMessage
                           token={token}
                           postId={element._id}
@@ -144,7 +144,7 @@ const ViewPosts = (props) => {
                         <div>
                           <button
                             onClick={() => {
-                              setMessage(true);
+                              setMessage(element._id);
                             }}
                           >
                             Create New Message
