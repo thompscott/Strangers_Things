@@ -64,7 +64,7 @@ const ViewPosts = (props) => {
   return (
     <div>
       {/*Page Title and Search Bar*/}
-      <div className="poststitle">
+      <div className="pageTitle">
       <h2>Posts</h2>
       {/*Search Bar*/}
       <div className="searchSection">
@@ -79,7 +79,7 @@ const ViewPosts = (props) => {
             <CreatePost token={token} setCreateNewPost={setCreateNewPost} />
           ) : (
             <div>
-              <button
+              <button className="createPostButton"
                 onClick={() => {
                   setCreateNewPost(true);
                 }}

@@ -11,6 +11,7 @@ const CreatePost = (props) => {
   return (
     <div className="createPost">
       <form
+    
         onSubmit={(event) => {
           event.preventDefault();
 
@@ -24,8 +25,9 @@ const CreatePost = (props) => {
           setCreateNewPost(false);
         }}
       >
-        <fieldset>
+        <div className="createInputs">
           <label htmlFor="title">Title</label>
+        <fieldset className="createfieldset">
           <input
             minLength={1}
             id="title"
@@ -38,8 +40,8 @@ const CreatePost = (props) => {
             }}
           />
         </fieldset>
-        <fieldset>
           <label htmlFor="description">Description</label>
+        <fieldset className="createfieldset" >
           <input
             minLength={1}
             id="description"
@@ -52,8 +54,8 @@ const CreatePost = (props) => {
             }}
           />
         </fieldset>
-        <fieldset>
           <label htmlFor="price">Price</label>
+        <fieldset className="createfieldset" >
           <input
             minLength={1}
             id="price"
@@ -66,9 +68,9 @@ const CreatePost = (props) => {
             }}
           />
         </fieldset>
-        <fieldset>
-          <label htmlFor="willDeliver">Will You Deliver?</label>
-          <input
+        <fieldset className="createfieldset">
+          <label  htmlFor="willDeliver">Will You Deliver?</label>
+          <input className="checkbox"
             id="willDeliver"
             type="checkbox"
             onChange={(event) => {
@@ -76,8 +78,9 @@ const CreatePost = (props) => {
             }}
           />
         </fieldset>
-        <button type="submit">Create Post</button>
-        <button
+        </div>
+        <button className="createPostButton" type="submit">Create Post</button>
+        <button className="cancelCreatePost"
           onClick={() => {
             setCreateNewPost(false);
           }}

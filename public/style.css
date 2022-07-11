@@ -10,6 +10,12 @@ header {
   justify-content: space-between;
 }
 
+header > h1 {
+  padding-left: 6px;
+  font-size: 40px;
+  font-family: cursive, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 #navigation {
   display: flex;
   flex-direction: row;
@@ -19,10 +25,14 @@ header {
 }
 
 .tab {
+  font-size: 20px;
   text-decoration: none;
   color: black;
+
   margin-right: 15px;
+  margin-top: 15px;
   border: solid;
+  padding-top: 5px;
   padding-left: 10px;
   padding-right: 10px;
   border-top-left-radius: 15px;
@@ -31,20 +41,19 @@ header {
 }
 
 .tab:hover {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
 
-.Posts{
-    border: solid;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 5px;
-    background-color: #19a7ff;
-    color: white;
-    box-shadow: 0 5px 10px 2px black;
-
+.Posts {
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 5px;
+  background-color: #19a7ff;
+  color: white;
+  box-shadow: 0 5px 10px 2px black;
 }
 
 .postTitle {
@@ -53,14 +62,17 @@ header {
   margin-bottom: 5px;
 }
 
-.poststitle {
+.pageTitle {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #ff3334;
   border-top: solid;
 }
-
+.pageTitle > h2 {
+  padding-left: 7px;
+  font-size: 30px;
+}
 .searchSection {
   padding: 5px;
   background-color: #19a7ff;
@@ -72,3 +84,35 @@ header {
   margin-right: 8px;
 }
 
+.createPostButton {
+  border: solid black 1px;
+  background-color: #18be38;
+  margin: 20px;
+  padding: 10px;
+  color: white;
+  
+  /* box-shadow: 0 1px 10px 0px black; */
+  border-radius: 5px;
+}
+
+.cancelCreatePost {
+  border: solid black 1px;
+  background-color: #ff3334;
+  margin: 20px;
+  padding: 10px;
+  color: white;
+ 
+  /* box-shadow: 0 1px 10px 0px black; */
+  border-radius: 5px;
+}
+.createInputs{
+  margin: 20px;
+}
+
+.createfieldset{
+  border: none;
+  margin-bottom: 10px;
+}
+.checkbox{
+  margin-left: 5px; 
+}
