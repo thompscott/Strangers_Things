@@ -3,6 +3,7 @@ import { ModifyPost } from "./index";
 import { GetPosts, getUser, deletePost } from "../api";
 import CreatePost from "./CreatePost";
 import CreateMessage from "./CreateMessage";
+import Search from "./Search";
 
 /*Creates Posts to View*/
 const ViewPosts = (props) => {
@@ -12,7 +13,7 @@ const ViewPosts = (props) => {
   const [userId, setUserId] = useState("");
   const [createNewPost, setCreateNewPost] = useState(false);
   const [message, setMessage] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const fetchAllPosts = async () => {
     const data = await GetPosts(token);
     const posts = data.data.posts;
@@ -25,50 +26,58 @@ const ViewPosts = (props) => {
   useEffect(() => {
     fetchAllPosts();
   }, []);
-  console.log(allPosts)
+  console.log(allPosts);
   /*See if searchTerm matches someting in post username, description, price, or title*/
   function postMatches(post, text) {
-    
-      const username = post.author.username.includes(text);
-      const description = post.description.includes(text);
-      const price = post.price.includes(text);
-      const title = post.title.includes(text);
-      console.log(username);
+    text = text.toLowerCase();
 
-      console.log(username || description || price || title)
-      return (username || description || price || title);
+    const username = post.author.username.toLowerCase();
+    const description = post.description.toLowerCase();
+    const price = post.price.toLowerCase();
+    const title = post.title.toLowerCase();
 
-    
+    const usernameBool = username.includes(text);
+    const descriptionBool = description.includes(text);
+    const priceBool = price.includes(text);
+    const titleBool = title.includes(text);
+
+    return usernameBool || descriptionBool || priceBool || titleBool;
   }
-  const filteredPosts = allPosts.filter((post) => postMatches(post, searchTerm));
-  const  postsToDisplay = (searchTerm.length ? filteredPosts : allPosts)
+  const filteredPosts = allPosts.filter((post) =>
+    postMatches(post, searchTerm)
+  );
+  const postsToDisplay = searchTerm.length ? filteredPosts : allPosts;
+
   /*Creates User Posts JSX*/
   return (
     <div>
-      {token ?  <div className="createNewPost">
-        {createNewPost ? (
-          <CreatePost token={token} setCreateNewPost ={setCreateNewPost}/>
-        ) :  (
-          <div>
-          <button
-            onClick={() => {
-              setCreateNewPost(true);
-            }}
-          >
-            Create New Post
-          </button>
-          </div>
-        )}
-
-        
-      </div> : null}
-      
+      {token ? (
+        <div className="createNewPost">
+          {createNewPost ? (
+            <CreatePost token={token} setCreateNewPost={setCreateNewPost} />
+          ) : (
+            <div>
+              <button
+                onClick={() => {
+                  setCreateNewPost(true);
+                }}
+              >
+                Create New Post
+              </button>
+            </div>
+          )}
+        </div>
+      ) : null}
+      <div className="searchSection">
+        <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+      </div>
       <div>
-        
         {postsToDisplay
           ? postsToDisplay.map((element) => {
-            {userId === element.author._id ? console.log(element): null}
-            
+              {
+                userId === element.author._id ? console.log(element) : null;
+              }
+
               return (
                 <div key={element._id} className="">
                   <h2 className="postsTitle">{element.title}</h2>
@@ -90,52 +99,60 @@ const ViewPosts = (props) => {
 
                   {userId === element.author._id ? (
                     <div>
+                      <div>
+                        {" "}
+                        <button
+                          onClick={() => {
+                            setModify(element._id);
+                            return;
+                          }}
+                        >
+                          Modify Post{" "}
+                        </button>
+                        <button
+                          onClick={() => {
+                            deletePost(token, element._id);
+                            return;
+                          }}
+                        >
+                          Delete Post
+                        </button>{" "}
+                      </div>
+                      <div>
+                        <h3>Messages</h3>
+                        {element.messages.map((messageElement) => {
+                          return (
+                            <div key={messageElement._id}>
+                              <p>{messageElement.content}</p>
+                              <p>
+                                Sent From: {messageElement.fromUser.username}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
                     <div>
-                      {" "}
-                      <button
-                        onClick={() => {
-                          setModify(element._id);
-                          return;
-                        }}
-                      >
-                        Modify Post{" "}
-                      </button>
-                      <button
-                        onClick={() => {
-                          deletePost(token, element._id);
-                          return;
-                        }}
-                      >
-                        Delete Post
-                      </button>{" "}
+                      {message ? (
+                        <CreateMessage
+                          token={token}
+                          postId={element._id}
+                          setMessage={setMessage}
+                        />
+                      ) : (
+                        <div>
+                          <button
+                            onClick={() => {
+                              setMessage(true);
+                            }}
+                          >
+                            Create New Message
+                          </button>
+                        </div>
+                      )}
                     </div>
-                    <div>
-                      <h3>Messages</h3>
-                      {element.messages.map((messageElement) => {
-                        return (
-                          <div key={messageElement._id} >
-                            <p>{messageElement.content}</p>
-                            <p>Sent From: {messageElement.fromUser.username}</p>
-                          </div>
-                          
-
-                        )
-                      })}
-                    </div>
-                    </div>
-                  ) : <div >
-                         {message ?  <CreateMessage  token={token}  postId={element._id} setMessage={setMessage} /> :  (
-          <div>
-          <button
-            onClick={() => {
-              setMessage(true);
-            }}
-          >
-            Create New Message
-          </button>
-          </div>
-        )}
-                  </div> }
+                  )}
                 </div>
               );
             })
