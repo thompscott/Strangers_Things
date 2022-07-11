@@ -96,7 +96,7 @@ const ViewPosts = (props) => {
 
               return (
                 /*Post*/
-                <div key={element._id} className="">
+                <div key={element._id} className="Posts">
                   <h2 className="postsTitle">{element.title}</h2>
                   <p className="userPosts">{element.author.username}</p>
                   <p className="postsDescription">{element.description}</p>

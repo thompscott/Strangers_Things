@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #19a7ff;
+  display: flex;
+  justify-content: space-between;
+}
+
+#navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-decoration: none;
+  color: black;
+}
+
+.tab {
+  text-decoration: none;
+  color: black;
+  margin-right: 15px;
+  border: solid;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+}
+
+.tab:hover {
+    background-color: lightgrey;
+}
+
+.Posts{
+    border: solid;
+    margin-top: 20px;
+}
