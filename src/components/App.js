@@ -18,7 +18,7 @@ const App = () => {
         element={<LogIn token={token} setToken={setToken} />}
       />
       <Route
-        path="/register"
+        exact path="/"
         element={<LogIn token={token} setToken={setToken} />}
       />
     </Routes>

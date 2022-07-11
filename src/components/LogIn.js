@@ -59,6 +59,8 @@ const LogIn = (props) => {
               }}
             />
           </fieldset>
+        {/* Buttons*/}
+          <button type="submit">LogIn</button>
           <button
             type="submit"
             onClick={() => {
@@ -67,7 +69,6 @@ const LogIn = (props) => {
           >
             Register
           </button>
-          <button type="submit">LogIn</button>
         </form>
       </div>
     );

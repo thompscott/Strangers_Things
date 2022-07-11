@@ -14,21 +14,30 @@ const ViewPosts = (props) => {
   const [createNewPost, setCreateNewPost] = useState(false);
   const [message, setMessage] = useState('');
   const [searchTerm, setSearchTerm] = useState("");
+
+  /*Gets Posts and User Id*/
   const fetchAllPosts = async () => {
+    /*Get Posts*/
     const data = await GetPosts(token);
     const posts = data.data.posts;
     setAllPosts(posts);
 
-    const userData = await getUser(token);
-    const userIdIn = userData.data._id;
-    setUserId(userIdIn);
+    /*Get User Id*/
+    if (token) {
+      const userData = await getUser(token);
+      const userIdIn = userData.data._id;
+      setUserId(userIdIn);
+    }
   };
   useEffect(() => {
     fetchAllPosts();
   }, []);
   console.log(allPosts);
+
+
   /*See if searchTerm matches someting in post username, description, price, or title*/
   function postMatches(post, text) {
+    /*Convert to Lower Case*/
     text = text.toLowerCase();
 
     const username = post.author.username.toLowerCase();
@@ -36,6 +45,7 @@ const ViewPosts = (props) => {
     const price = post.price.toLowerCase();
     const title = post.title.toLowerCase();
 
+    /*Compare*/
     const usernameBool = username.includes(text);
     const descriptionBool = description.includes(text);
     const priceBool = price.includes(text);
@@ -43,6 +53,8 @@ const ViewPosts = (props) => {
 
     return usernameBool || descriptionBool || priceBool || titleBool;
   }
+
+  /*Filters Post by Search*/
   const filteredPosts = allPosts.filter((post) =>
     postMatches(post, searchTerm)
   );
@@ -51,7 +63,8 @@ const ViewPosts = (props) => {
   /*Creates User Posts JSX*/
   return (
     <div>
-      {token ? (
+      {/*Create New Post Button*/
+      token ? (
         <div className="createNewPost">
           {createNewPost ? (
             <CreatePost token={token} setCreateNewPost={setCreateNewPost} />
@@ -68,23 +81,28 @@ const ViewPosts = (props) => {
           )}
         </div>
       ) : null}
+      {/*Search Bar*/}
       <div className="searchSection">
         <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       </div>
+
       <div>
-        {postsToDisplay
+        {/*Displays Posts*/
+        postsToDisplay
           ? postsToDisplay.map((element) => {
               {
                 userId === element.author._id ? console.log(element) : null;
               }
 
               return (
+                /*Post*/
                 <div key={element._id} className="">
                   <h2 className="postsTitle">{element.title}</h2>
                   <p className="userPosts">{element.author.username}</p>
                   <p className="postsDescription">{element.description}</p>
                   <p className="price">{element.price}</p>
                   <p className="deliveryOption">{element.willDeliver}</p>
+                  {/*Modify Post*/}
                   {modify === element._id ? (
                     <ModifyPost
                       token={token}
@@ -96,7 +114,7 @@ const ViewPosts = (props) => {
                       setModify={setModify}
                     />
                   ) : null}
-
+                  {/*Modify Post Button*/}
                   {userId === element.author._id ? (
                     <div>
                       <div>
@@ -109,6 +127,7 @@ const ViewPosts = (props) => {
                         >
                           Modify Post{" "}
                         </button>
+                        {/*Delete Post Button*/}
                         <button
                           onClick={() => {
                             deletePost(token, element._id);
@@ -118,6 +137,7 @@ const ViewPosts = (props) => {
                           Delete Post
                         </button>{" "}
                       </div>
+                      {/*Display Messages*/}
                       <div>
                         <h3>Messages</h3>
                         {element.messages.map((messageElement) => {
@@ -134,6 +154,7 @@ const ViewPosts = (props) => {
                     </div>
                   ) : (
                     <div>
+                      {/*Create Message*/}
                       {message === element._id ? (
                         <CreateMessage
                           token={token}
@@ -142,6 +163,7 @@ const ViewPosts = (props) => {
                         />
                       ) : (
                         <div>
+                          {/*Create Message Button*/}
                           <button
                             onClick={() => {
                               setMessage(element._id);
