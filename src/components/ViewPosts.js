@@ -63,6 +63,15 @@ const ViewPosts = (props) => {
   /*Creates User Posts JSX*/
   return (
     <div>
+      {/*Page Title and Search Bar*/}
+      <div className="poststitle">
+      <h2>Posts</h2>
+      {/*Search Bar*/}
+      <div className="searchSection">
+        <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+      </div>
+      </div>
+      
       {/*Create New Post Button*/
       token ? (
         <div className="createNewPost">
@@ -81,10 +90,7 @@ const ViewPosts = (props) => {
           )}
         </div>
       ) : null}
-      {/*Search Bar*/}
-      <div className="searchSection">
-        <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
-      </div>
+      
 
       <div>
         {/*Displays Posts*/
@@ -97,11 +103,11 @@ const ViewPosts = (props) => {
               return (
                 /*Post*/
                 <div key={element._id} className="Posts">
-                  <h2 className="postsTitle">{element.title}</h2>
-                  <p className="userPosts">{element.author.username}</p>
-                  <p className="postsDescription">{element.description}</p>
-                  <p className="price">{element.price}</p>
-                  <p className="deliveryOption">{element.willDeliver}</p>
+                  <h2 className="postTitle">{element.title}</h2>
+                  <p className="userPosts">Posted By: {element.author.username}</p>
+                  <p className="postsDescription">Description: {element.description}</p>
+                  <p className="price">Price: {element.price}</p>
+                  <p className="deliveryOption">Will Deliver: {element.willDeliver ? "Yes" : "No"}</p>
                   {/*Modify Post*/}
                   {modify === element._id ? (
                     <ModifyPost

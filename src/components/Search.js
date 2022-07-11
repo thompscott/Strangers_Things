@@ -5,8 +5,8 @@ const Search = (props) => {
   return (
     <div className="SearchPost">
       <form>
+      <label htmlFor="Search" className="searchtext">Search</label>
         <fieldset>
-          <label htmlFor="Search">Search</label>
           <input
             minLength={1}
             id="search"

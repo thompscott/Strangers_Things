@@ -36,5 +36,39 @@ header {
 
 .Posts{
     border: solid;
+    border-radius: 10px;
+    padding: 10px;
     margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 5px;
+    background-color: #19a7ff;
+    color: white;
+    box-shadow: 0 5px 10px 2px black;
+
 }
+
+.postTitle {
+  color: black;
+  border-bottom: solid;
+  margin-bottom: 5px;
+}
+
+.poststitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #ff3334;
+  border-top: solid;
+}
+
+.searchSection {
+  padding: 5px;
+  background-color: #19a7ff;
+  border: none;
+}
+
+.searchtext {
+  color: white;
+  margin-right: 8px;
+}
+
