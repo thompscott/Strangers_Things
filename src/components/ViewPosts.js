@@ -155,6 +155,7 @@ const ViewPosts = (props) => {
                       <div>
                         <h3>Messages</h3>
                         {element.messages.map((messageElement) => {
+                          console.log(messageElement,)
                           return (
                             <div key={messageElement._id}>
                               <p>{messageElement.content}</p>

@@ -19,11 +19,11 @@ const App = () => {
       <Route path="/profile" element={<Profile username={username} token={token} setToken={setToken} />} />
       <Route
         path="/login"
-        element={<LogIn setToken={setToken} username={username} setUsername={setUsername} />}
+        element={<LogIn token={token} setToken={setToken} username={username} setUsername={setUsername} />}
       />
       <Route
         exact path="/"
-        element={<LogIn setToken={setToken} username={username} setUsername={setUsername} />}
+        element={<LogIn token={token} setToken={setToken} username={username} setUsername={setUsername} />}
       />
     </Routes>
   );//worthless comment

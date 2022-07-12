@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { logIn, registerAPI } from "../api";
 
-{/*Returns the Login/Register Page in JSX*/}
+{
+  /*Returns the Login/Register Page in JSX*/
+}
 const LogIn = (props) => {
-  const [setToken, username, setUsername] = [props.setToken, props.username, props.setUsername];
+  const [token, setToken, username, setUsername] = [
+    props.token,
+    props.setToken,
+    props.username,
+    props.setUsername,
+  ];
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(0);
-
+  const [loginMessage, setLoginMessage] = useState("");
   return (
     <div>
       {/*Page Title*/}
@@ -15,16 +22,15 @@ const LogIn = (props) => {
       </div>
 
       {/*Log Out Button*/}
-      {localStorage.getItem("token") ? (
+      {token ? (
         <div className="loginout">
           <h3 className="loggedin">Logged in as {username}</h3>
           <button
             onClick={() => {
               localStorage.removeItem("token");
-              localStorage.removeItem("username")
+              localStorage.removeItem("username");
               setToken("");
               setPassword("");
-
             }}
           >
             Log Out
@@ -37,7 +43,13 @@ const LogIn = (props) => {
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              handleSubmit(username, password, register, setToken);
+              handleSubmit(
+                username,
+                password,
+                register,
+                setToken,
+                setLoginMessage
+              );
               setRegister(0);
             }}
           >
@@ -70,6 +82,10 @@ const LogIn = (props) => {
                 }}
               />
             </fieldset>
+
+            {/* Warning Message */}
+            <h4>{loginMessage}</h4>
+
             {/* Buttons*/}
             <button type="submit">Login</button>
             <button
@@ -87,18 +103,35 @@ const LogIn = (props) => {
   );
 };
 
-{/*API Call, Login and Register*/}
-async function handleSubmit(username, password, register, setToken) {
+{
+  /*API Call, Login and Register*/
+}
+async function handleSubmit(
+  username,
+  password,
+  register,
+  setToken,
+  setLoginMessage
+) {
   if (register) {
     const token = await registerAPI(username, password);
-    localStorage.setItem("token", token);
-    localStorage.setItem("username", username);
-    setToken(token);
+    if (token) {
+      localStorage.setItem("token", token);
+      localStorage.setItem("username", username);
+      setToken(token);
+    } else {
+      setLoginMessage("Registration Failed");
+    }
   } else {
     const token = await logIn(username, password);
-    localStorage.setItem("token", token);
-    localStorage.setItem("username", username);
-    setToken(token);
+    if (token) {
+      localStorage.setItem("token", token);
+      localStorage.setItem("username", username);
+      setToken(token);
+      console.log(token, "token");
+    } else {
+      setLoginMessage("Login Failed");
+    }
   }
 }
 

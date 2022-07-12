@@ -6,10 +6,12 @@ const APIURL = `https://strangers-things.herokuapp.com/api/${cohortName}/`;
 /*Gets Posts from Database*/
 export const GetPosts = async (token) => {
   try {
-    const response = await fetch(`${APIURL}/posts`, { headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    }});
+    const response = await fetch(`${APIURL}/posts`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const result = response.json();
     return result;
   } catch (error) {
@@ -33,7 +35,9 @@ export const logIn = async (username, password) => {
       }),
     });
     const result = await response.json();
+
     const token = result.data.token;
+
     return token;
   } catch (error) {
     console.error(error);
@@ -112,51 +116,46 @@ export const getUser = async (token) => {
     });
     const result = await response.json();
     return result;
-
   } catch (error) {
     console.error(error);
   }
 };
 
 /*Deletes Post*/
-export const deletePost = async (token, postId) =>{
-    try {
-        const response = await fetch(`${APIURL}/posts/${postId}`, {  
-          method : "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });   
-        const result = await response.json();
-        return result;
-      } catch (error) {
-        console.error(error);
-      }
-
+export const deletePost = async (token, postId) => {
+  try {
+    const response = await fetch(`${APIURL}/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 /*Sends Message*/
-export const sendMessage=  async (token, postId, message) => {
+export const sendMessage = async (token, postId, message) => {
   try {
-    const response = await fetch(`${APIURL}/posts/${postId}/messages`, {  
-      method : "POST",
+    const response = await fetch(`${APIURL}/posts/${postId}/messages`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         message: {
-          content: message
-        }
-      })
-  
-    });   
+          content: message,
+        },
+      }),
+    });
     const result = await response.json();
     return result;
   } catch (error) {
     console.error(error);
   }
-
-
-}
+};
