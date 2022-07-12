@@ -24,9 +24,11 @@ const CreateMessage = (props) => {
         }}
       >
         {/*Text Input Boxes*/}
-        <fieldset>
           <label htmlFor="message">Message</label>
-          <input
+        <fieldset className="messageFieldset">
+          <textarea
+          rows={"5"}
+          cols={50}
             minLength={1}
             id="message"
             type="text"

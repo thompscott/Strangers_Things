@@ -7,7 +7,7 @@ import Search from "./Search";
 
 /*Creates Posts JSX*/
 const ViewPosts = (props) => {
-  const [token] = [props.token];
+  const [token, username] = [props.token, props.username];
   const [allPosts, setAllPosts] = useState([]);
   const [modify, setModify] = useState(0);
   const [userId, setUserId] = useState("");
@@ -70,6 +70,7 @@ const ViewPosts = (props) => {
       <div className="searchSection">
         <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       </div>
+      
       </div>
       
       {/*Create New Post Button*/
@@ -79,6 +80,7 @@ const ViewPosts = (props) => {
             <CreatePost token={token} setCreateNewPost={setCreateNewPost} />
           ) : (
             <div>
+              <h3 className="loggedin">Logged in as {username}</h3>
               <button className="createPostButton"
                 onClick={() => {
                   setCreateNewPost(true);

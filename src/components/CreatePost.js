@@ -30,6 +30,7 @@ const CreatePost = (props) => {
           <label htmlFor="title">Title</label>
         <fieldset className="createfieldset">
           <input
+          size={'58'}
             minLength={1}
             id="title"
             type="text"
@@ -43,7 +44,9 @@ const CreatePost = (props) => {
         </fieldset>
           <label htmlFor="description">Description</label>
         <fieldset className="createfieldset" >
-          <input
+          <textarea
+          rows={'5'}
+          cols="50"
             minLength={1}
             id="description"
             type="text"
@@ -58,6 +61,7 @@ const CreatePost = (props) => {
           <label htmlFor="price">Price</label>
         <fieldset className="createfieldset" >
           <input
+          size={'58'}
             minLength={1}
             id="price"
             type="text"

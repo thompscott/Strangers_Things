@@ -49,6 +49,7 @@ const ModifyPost = (props) => {
           <label htmlFor="title">Title</label>
         <fieldset>
           <input
+          size={'58'}
             minLength={1}
             id="title"
             type="text"
@@ -62,7 +63,9 @@ const ModifyPost = (props) => {
         </fieldset>
           <label htmlFor="description">Description</label>
         <fieldset>
-          <input
+          <textarea
+          rows={'5'}
+          cols='50'
             minLength={1}
             id="description"
             type="text"
@@ -77,6 +80,7 @@ const ModifyPost = (props) => {
           <label htmlFor="price">Price</label>
         <fieldset>
           <input
+           size={'58'}
             minLength={1}
             id="price"
             type="text"

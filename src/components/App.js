@@ -15,8 +15,8 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/posts" element={<ViewPosts token={token} />} />
-      <Route path="/profile" element={<Profile token={token} setToken={setToken} />} />
+      <Route path="/posts" element={<ViewPosts username={username} token={token} />} />
+      <Route path="/profile" element={<Profile username={username} token={token} setToken={setToken} />} />
       <Route
         path="/login"
         element={<LogIn setToken={setToken} username={username} setUsername={setUsername} />}
