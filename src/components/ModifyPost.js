@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { modifyPost } from "../api";
 
+{/*Returns Modify Post JSX*/}
 const ModifyPost = (props) => {
   const [
     token,
@@ -23,10 +24,16 @@ const ModifyPost = (props) => {
   const [title, setTitle] = useState(titleIn);
   const [description, setDescription] = useState(descriptionIn);
   const [price, setPrice] = useState(priceIn);
+
+  
   return (
     <div className="modifyPost">
+
+      {/*Modify Post Form*/}
       <form
         onSubmit={(event) => {
+
+          {/*API Call, Modify Post*/}
           event.preventDefault();
           const postObj = {
             title: title,
@@ -38,6 +45,7 @@ const ModifyPost = (props) => {
           setModify(0);
         }}
       >
+        {/*Modify Post Form Text Boxes*/}
         <fieldset>
           <label htmlFor="title">Title</label>
           <input
@@ -85,11 +93,13 @@ const ModifyPost = (props) => {
           <input
             id="willDeliver"
             type="checkbox"
-            onChange={(event) => {
+            onChange={() => {
               setDeliveryCheck(!deliveryCheck);
             }}
           />
         </fieldset>
+        
+        {/*Buttons*/}
         <button type="submit">Update Post</button>
         <button
           onClick={() => {

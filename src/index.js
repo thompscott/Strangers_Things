@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { App } from "./components";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-
+/*Renders Webpage*/
 const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
 <BrowserRouter>
@@ -13,8 +13,7 @@ root.render(
     <nav id='navigation'>
             <Link className="tab" to="/posts">Posts</Link>
             <Link className="tab" to="/profile">Profile</Link>
-            <Link className="tab" to="/login">Login/Register</Link>
-            
+            <Link className="tab" to="/login">Login/Logout/Register</Link>
           </nav>
   </header>
           <App/>

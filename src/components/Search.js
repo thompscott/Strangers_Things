@@ -1,5 +1,6 @@
 import React from "react";
 
+{/*Creates Search Bar Form JSX*/}
 const Search = (props) => {
   const [searchTerm, setSearchTerm] = [props.searchTerm, props.setSearchTerm];
   return (

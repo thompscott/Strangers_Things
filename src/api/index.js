@@ -17,6 +17,7 @@ export const GetPosts = async (token) => {
   }
 };
 
+/*Logs In User*/
 export const logIn = async (username, password) => {
   try {
     const response = await fetch(`${APIURL}/users/login`, {
@@ -39,6 +40,7 @@ export const logIn = async (username, password) => {
   }
 };
 
+/*Registers User*/
 export const registerAPI = async (username, password) => {
   try {
     const response = await fetch(`${APIURL}/users/register`, {
@@ -61,6 +63,7 @@ export const registerAPI = async (username, password) => {
   }
 };
 
+/*Creates Post*/
 export const createPost = async (posts, token) => {
   try {
     const response = await fetch(`${APIURL}/posts`, {
@@ -79,6 +82,7 @@ export const createPost = async (posts, token) => {
   }
 };
 
+/*Modifies Post*/
 export const modifyPost = async (posts, token, postId) => {
   try {
     const response = await fetch(`${APIURL}/posts/${postId}`, {
@@ -97,6 +101,7 @@ export const modifyPost = async (posts, token, postId) => {
   }
 };
 
+/*Gets User Data*/
 export const getUser = async (token) => {
   try {
     const response = await fetch(`${APIURL}/users/me`, {
@@ -113,6 +118,7 @@ export const getUser = async (token) => {
   }
 };
 
+/*Deletes Post*/
 export const deletePost = async (token, postId) =>{
     try {
         const response = await fetch(`${APIURL}/posts/${postId}`, {  
@@ -130,6 +136,7 @@ export const deletePost = async (token, postId) =>{
 
 };
 
+/*Sends Message*/
 export const sendMessage=  async (token, postId, message) => {
   try {
     const response = await fetch(`${APIURL}/posts/${postId}/messages`, {  

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createPost } from "../api";
 
+{/*Returns Create Post Form JSX*/}
 const CreatePost = (props) => {
   const [token, setCreateNewPost] = [props.token, props.setCreateNewPost];
   const [deliveryCheck, setDeliveryCheck] = useState(false);
@@ -10,11 +11,11 @@ const CreatePost = (props) => {
 
   return (
     <div className="createPost">
+      {/*Create Post Form*/}
       <form
-    
         onSubmit={(event) => {
+          {/*API Call, Create New Post*/}
           event.preventDefault();
-
           const postObj = {
             title: title,
             description: description,
@@ -24,7 +25,7 @@ const CreatePost = (props) => {
           createPost(postObj, token);
           setCreateNewPost(false);
         }}
-      >
+      > {/*Create Post Text Boxes*/}
         <div className="createInputs">
           <label htmlFor="title">Title</label>
         <fieldset className="createfieldset">
@@ -68,6 +69,7 @@ const CreatePost = (props) => {
             }}
           />
         </fieldset>
+        {/*Will Deliver Checkbox*/}
         <fieldset className="createfieldset">
           <label  htmlFor="willDeliver">Will You Deliver?</label>
           <input className="checkbox"
@@ -79,6 +81,7 @@ const CreatePost = (props) => {
           />
         </fieldset>
         </div>
+        {/*Buttons*/}
         <button className="createPostButton" type="submit">Create Post</button>
         <button className="cancelCreatePost"
           onClick={() => {

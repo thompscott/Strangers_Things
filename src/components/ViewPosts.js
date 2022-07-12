@@ -5,7 +5,7 @@ import CreatePost from "./CreatePost";
 import CreateMessage from "./CreateMessage";
 import Search from "./Search";
 
-/*Creates Posts to View*/
+/*Creates Posts JSX*/
 const ViewPosts = (props) => {
   const [token] = [props.token];
   const [allPosts, setAllPosts] = useState([]);
@@ -17,12 +17,12 @@ const ViewPosts = (props) => {
 
   /*Gets Posts and User Id*/
   const fetchAllPosts = async () => {
-    /*Get Posts*/
+    /*API Call, Get Posts*/
     const data = await GetPosts(token);
     const posts = data.data.posts;
     setAllPosts(posts);
 
-    /*Get User Id*/
+    /*API Call Get User Id*/
     if (token) {
       const userData = await getUser(token);
       const userIdIn = userData.data._id;
@@ -108,6 +108,7 @@ const ViewPosts = (props) => {
                   <p className="postsDescription">Description: {element.description}</p>
                   <p className="price">Price: {element.price}</p>
                   <p className="deliveryOption">Will Deliver: {element.willDeliver ? "Yes" : "No"}</p>
+                  
                   {/*Modify Post*/}
                   {modify === element._id ? (
                     <ModifyPost
@@ -120,6 +121,7 @@ const ViewPosts = (props) => {
                       setModify={setModify}
                     />
                   ) : null}
+
                   {/*Modify Post Button*/}
                   {userId === element.author._id ? (
                     <div>
@@ -133,6 +135,7 @@ const ViewPosts = (props) => {
                         >
                           Modify Post{" "}
                         </button>
+
                         {/*Delete Post Button*/}
                         <button
                           onClick={() => {
@@ -143,6 +146,7 @@ const ViewPosts = (props) => {
                           Delete Post
                         </button>{" "}
                       </div>
+
                       {/*Display Messages*/}
                       <div>
                         <h3>Messages</h3>
@@ -160,6 +164,7 @@ const ViewPosts = (props) => {
                     </div>
                   ) : (
                     <div>
+
                       {/*Create Message*/}
                       {message === element._id ? (
                         <CreateMessage
@@ -169,14 +174,15 @@ const ViewPosts = (props) => {
                         />
                       ) : (
                         <div>
+                          
                           {/*Create Message Button*/}
-                          <button
+                          {token ? <button
                             onClick={() => {
                               setMessage(element._id);
                             }}
                           >
                             Create New Message
-                          </button>
+                          </button> : null}
                         </div>
                       )}
                     </div>
