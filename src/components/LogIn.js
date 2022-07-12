@@ -128,7 +128,6 @@ async function handleSubmit(
       localStorage.setItem("token", token);
       localStorage.setItem("username", username);
       setToken(token);
-      console.log(token, "token");
     } else {
       setLoginMessage("Login Failed");
     }

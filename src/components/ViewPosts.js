@@ -13,6 +13,7 @@ const ViewPosts = (props) => {
   const [userId, setUserId] = useState("");
   const [createNewPost, setCreateNewPost] = useState(false);
   const [message, setMessage] = useState('');
+  const [deleteButton, setDeleteButton] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
   /*Gets Posts and User Id*/
@@ -31,8 +32,7 @@ const ViewPosts = (props) => {
   };
   useEffect(() => {
     fetchAllPosts();
-  }, []);
-  console.log(allPosts);
+  }, [modify, createNewPost, message, deleteButton]);
 
 
   /*See if searchTerm matches someting in post username, description, price, or title*/
@@ -80,8 +80,8 @@ const ViewPosts = (props) => {
             <CreatePost token={token} setCreateNewPost={setCreateNewPost} />
           ) : (
             <div>
-              {token ? <h3 className="loggedin">Logged in as {username}</h3> : <h3 className="loggedin">Log In to Create/Edit Posts, Send Messages</h3>
-              }
+               <h3 className="loggedin">Logged in as {username}</h3>
+              
               <button className="createPostButton"
                 onClick={() => {
                   setCreateNewPost(true);
@@ -99,9 +99,7 @@ const ViewPosts = (props) => {
         {/*Displays Posts*/
         postsToDisplay
           ? postsToDisplay.map((element) => {
-              {
-                userId === element.author._id ? console.log(element) : null;
-              }
+              
 
               return (
                 /*Post*/
@@ -142,8 +140,10 @@ const ViewPosts = (props) => {
 
                         {/*Delete Post Button*/}
                         <button className="cancelButton"
-                          onClick={() => {
-                            deletePost(token, element._id);
+                          onClick={async() => {
+                            await deletePost(token, element._id);
+                            setDeleteButton(!deleteButton);
+
                             return;
                           }}
                         >
@@ -155,7 +155,7 @@ const ViewPosts = (props) => {
                       <div>
                         <h3>Messages</h3>
                         {element.messages.map((messageElement) => {
-                          console.log(messageElement,)
+                    
                           return (
                             <div key={messageElement._id}>
                               <p>{messageElement.content}</p>

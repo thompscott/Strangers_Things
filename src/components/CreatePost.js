@@ -13,7 +13,7 @@ const CreatePost = (props) => {
     <div className="createPost">
       {/*Create Post Form*/}
       <form
-        onSubmit={(event) => {
+        onSubmit={async(event) => {
           {/*API Call, Create New Post*/}
           event.preventDefault();
           const postObj = {
@@ -22,7 +22,7 @@ const CreatePost = (props) => {
             price: price,
             willDeliver: deliveryCheck,
           };
-          createPost(postObj, token);
+          await createPost(postObj, token);
           setCreateNewPost(false);
         }}
       > {/*Create Post Text Boxes*/}

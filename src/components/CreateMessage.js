@@ -17,9 +17,9 @@ const CreateMessage = (props) => {
 
       {/*API Call, Send Message*/}
       <form
-        onSubmit={(event) => {
+        onSubmit={async (event) => {
           event.preventDefault();
-          sendMessage(token, postId, messageCont);
+          await sendMessage(token, postId, messageCont);
           setMessage("");
         }}
       >

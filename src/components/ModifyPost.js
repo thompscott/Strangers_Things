@@ -31,7 +31,7 @@ const ModifyPost = (props) => {
 
       {/*Modify Post Form*/}
       <form className="modifyForm"
-        onSubmit={(event) => {
+        onSubmit={ async (event) => {
 
           {/*API Call, Modify Post*/}
           event.preventDefault();
@@ -41,7 +41,7 @@ const ModifyPost = (props) => {
             price: price,
             willDeliver: deliveryCheck,
           };
-          modifyPost(postObj, token, postId);
+          await modifyPost(postObj, token, postId);
           setModify(0);
         }}
       >
@@ -95,6 +95,7 @@ const ModifyPost = (props) => {
         <fieldset>
           <label htmlFor="willDeliver">Will You Deliver?</label>
           <input className="checkbox"
+            checked={deliveryCheck}
             id="willDeliver"
             type="checkbox"
             onChange={() => {

@@ -15,7 +15,6 @@ const Profile = (props) => {
   }
   const fetchUser = async () => {
     const userData = await getUser(token);
-    console.log(userData, "data");
     setUser(userData.data._id);
     setMessages(userData.data.messages);
   };
