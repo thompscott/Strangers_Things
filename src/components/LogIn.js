@@ -3,8 +3,7 @@ import { logIn, registerAPI } from "../api";
 
 {/*Returns the Login/Register Page in JSX*/}
 const LogIn = (props) => {
-  const [setToken] = [props.setToken];
-  const [username, setUsername] = useState("");
+  const [setToken, username, setUsername] = [props.setToken, props.username, props.setUsername];
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(0);
 
@@ -17,12 +16,15 @@ const LogIn = (props) => {
 
       {/*Log Out Button*/}
       {localStorage.getItem("token") ? (
-        <div>
+        <div className="loginout">
+          <h3 className="loggedin">Logged in as {username}</h3>
           <button
             onClick={() => {
               localStorage.removeItem("token");
+              localStorage.removeItem("username")
               setToken("");
               setPassword("");
+
             }}
           >
             Log Out
@@ -30,6 +32,7 @@ const LogIn = (props) => {
         </div>
       ) : (
         <div className="login">
+          <h3>Login/Register</h3>
           {/*Login/Register Form*/}
           <form
             onSubmit={(event) => {
@@ -68,7 +71,7 @@ const LogIn = (props) => {
               />
             </fieldset>
             {/* Buttons*/}
-            <button type="submit">LogIn</button>
+            <button type="submit">Login</button>
             <button
               type="submit"
               onClick={() => {
@@ -89,10 +92,12 @@ async function handleSubmit(username, password, register, setToken) {
   if (register) {
     const token = await registerAPI(username, password);
     localStorage.setItem("token", token);
+    localStorage.setItem("username", username);
     setToken(token);
   } else {
     const token = await logIn(username, password);
     localStorage.setItem("token", token);
+    localStorage.setItem("username", username);
     setToken(token);
   }
 }

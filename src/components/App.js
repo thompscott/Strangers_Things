@@ -11,6 +11,7 @@ const App = () => {
   const [token, setToken] = useState(
     localStorage.getItem("token") ? localStorage.getItem("token") : ""
   );
+  const [username, setUsername] = useState(localStorage.getItem("username") ? localStorage.getItem("username") : "");
 
   return (
     <Routes>
@@ -18,7 +19,7 @@ const App = () => {
       <Route path="/profile" element={<Profile token={token} setToken={setToken} />} />
       <Route
         path="/login"
-        element={<LogIn setToken={setToken} />}
+        element={<LogIn setToken={setToken} username={username} setUsername={setUsername} />}
       />
       <Route
         exact path="/"

@@ -12,7 +12,7 @@ const Search = (props) => {
             minLength={1}
             id="search"
             type="text"
-            placeholder="Search Post"
+            placeholder="Search Posts"
             value={searchTerm}
             onChange={(event) => {
               event.preventDefault();

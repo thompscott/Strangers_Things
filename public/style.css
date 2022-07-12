@@ -91,17 +91,16 @@ button {
   border: solid black 1px;
   padding: 10px;
   border-radius: 5px;
+  margin: 20px;
   
 }
 .createPostButton {
   background-color: #18be38;
-  margin: 20px;
   color: white;
 }
 
 .cancelButton {
   background-color: #ff3334;
-  margin: 20px;
   color: white;
 }
 
@@ -119,4 +118,43 @@ button {
 .modifyForm > fieldset{
   border: none;
   margin-bottom: 10px;
+}
+
+.login {
+  border: solid black;
+  background-color:#19a7ff;
+  text-align: center;
+  margin: 50px;
+  margin-right: 30vw;
+  margin-left: 30vw;
+  padding: 20px;
+}
+
+.loginout {
+  border: solid black;
+  background-color:#19a7ff;
+  text-align: center;
+  margin: 50px;
+  margin-right: 30vw;
+  margin-left: 30vw;
+  padding: 20px;
+}
+
+.login > form > fieldset {
+  border:none;
+  margin-bottom: 10px;
+}
+
+.login > form > fieldset > label {
+  margin-right: 10px;
+}
+
+.login > h3 {
+  margin: 10px;
+  font-size: 30px;
+}
+
+.loggedin {
+  margin: 10px;
+  font-size: 30px;
 }

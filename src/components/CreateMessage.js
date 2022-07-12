@@ -43,7 +43,7 @@ const CreateMessage = (props) => {
         <button type="submit">Send Message</button>
 
         {/*Cancel Button*/}
-        <button
+        <button className="cancelButton"
           onClick={() => {
             setMessage("");
           }}
