@@ -26,7 +26,7 @@ const App = () => {
         element={<LogIn setToken={setToken} />}
       />
     </Routes>
-  );
+  );//worthless comment
 };
 
 export default App;
