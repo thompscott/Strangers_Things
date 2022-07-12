@@ -30,7 +30,7 @@ const ModifyPost = (props) => {
     <div className="modifyPost">
 
       {/*Modify Post Form*/}
-      <form
+      <form className="modifyForm"
         onSubmit={(event) => {
 
           {/*API Call, Modify Post*/}
@@ -46,8 +46,8 @@ const ModifyPost = (props) => {
         }}
       >
         {/*Modify Post Form Text Boxes*/}
-        <fieldset>
           <label htmlFor="title">Title</label>
+        <fieldset>
           <input
             minLength={1}
             id="title"
@@ -60,8 +60,8 @@ const ModifyPost = (props) => {
             }}
           />
         </fieldset>
-        <fieldset>
           <label htmlFor="description">Description</label>
+        <fieldset>
           <input
             minLength={1}
             id="description"
@@ -74,8 +74,8 @@ const ModifyPost = (props) => {
             }}
           />
         </fieldset>
-        <fieldset>
           <label htmlFor="price">Price</label>
+        <fieldset>
           <input
             minLength={1}
             id="price"
@@ -90,7 +90,7 @@ const ModifyPost = (props) => {
         </fieldset>
         <fieldset>
           <label htmlFor="willDeliver">Will You Deliver?</label>
-          <input
+          <input className="checkbox"
             id="willDeliver"
             type="checkbox"
             onChange={() => {
@@ -101,7 +101,7 @@ const ModifyPost = (props) => {
         
         {/*Buttons*/}
         <button type="submit">Update Post</button>
-        <button
+        <button className="cancelButton"
           onClick={() => {
             setModify(0);
           }}

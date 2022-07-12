@@ -137,7 +137,7 @@ const ViewPosts = (props) => {
                         </button>
 
                         {/*Delete Post Button*/}
-                        <button
+                        <button className="cancelButton"
                           onClick={() => {
                             deletePost(token, element._id);
                             return;

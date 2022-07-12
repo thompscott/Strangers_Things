@@ -55,6 +55,9 @@ header > h1 {
   color: white;
   box-shadow: 0 5px 10px 2px black;
 }
+.deliveryOption{
+  border-bottom: solid black;
+}
 
 .postTitle {
   color: black;
@@ -84,35 +87,36 @@ header > h1 {
   margin-right: 8px;
 }
 
-.createPostButton {
+button {
   border: solid black 1px;
+  padding: 10px;
+  border-radius: 5px;
+  
+}
+.createPostButton {
   background-color: #18be38;
   margin: 20px;
-  padding: 10px;
   color: white;
-  
-  /* box-shadow: 0 1px 10px 0px black; */
-  border-radius: 5px;
 }
 
-.cancelCreatePost {
-  border: solid black 1px;
+.cancelButton {
   background-color: #ff3334;
   margin: 20px;
-  padding: 10px;
   color: white;
- 
-  /* box-shadow: 0 1px 10px 0px black; */
-  border-radius: 5px;
 }
-.createInputs{
+
+.createInputs {
   margin: 20px;
 }
 
-.createfieldset{
+.createfieldset {
   border: none;
   margin-bottom: 10px;
 }
-.checkbox{
-  margin-left: 5px; 
+.checkbox {
+  margin-left: 5px;
+}
+.modifyForm > fieldset{
+  border: none;
+  margin-bottom: 10px;
 }

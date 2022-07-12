@@ -83,7 +83,7 @@ const CreatePost = (props) => {
         </div>
         {/*Buttons*/}
         <button className="createPostButton" type="submit">Create Post</button>
-        <button className="cancelCreatePost"
+        <button className="cancelButton"
           onClick={() => {
             setCreateNewPost(false);
           }}
