@@ -23,7 +23,7 @@ const App = () => {
       />
       <Route
         exact path="/"
-        element={<LogIn setToken={setToken} />}
+        element={<LogIn setToken={setToken} username={username} setUsername={setUsername} />}
       />
     </Routes>
   );//worthless comment

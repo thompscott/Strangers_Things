@@ -80,7 +80,8 @@ const ViewPosts = (props) => {
             <CreatePost token={token} setCreateNewPost={setCreateNewPost} />
           ) : (
             <div>
-              <h3 className="loggedin">Logged in as {username}</h3>
+              {token ? <h3 className="loggedin">Logged in as {username}</h3> : <h3 className="loggedin">Log In to Create/Edit Posts, Send Messages</h3>
+              }
               <button className="createPostButton"
                 onClick={() => {
                   setCreateNewPost(true);
@@ -127,6 +128,7 @@ const ViewPosts = (props) => {
                   {/*Modify Post Button*/}
                   {userId === element.author._id ? (
                     <div>
+                      {modify === 0 ? 
                       <div>
                         {" "}
                         <button
@@ -147,7 +149,7 @@ const ViewPosts = (props) => {
                         >
                           Delete Post
                         </button>{" "}
-                      </div>
+                      </div>: null }
 
                       {/*Display Messages*/}
                       <div>
